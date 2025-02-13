@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Input, Link, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
+
 import { login } from "@/api/auth";
 
 const Login = () => {
@@ -49,15 +50,15 @@ const Login = () => {
       <p className="text-center text-small">
         Need to create an account?{" "}
         <Link
+          className="cursor-pointer"
           size="sm"
           onClick={() => router.push("/auth/signup")}
-          className="cursor-pointer"
         >
           Sign up
         </Link>
       </p>
       <div className="flex gap-2 justify-end">
-        <Button fullWidth color="primary" type="submit" isLoading={loading}>
+        <Button fullWidth color="primary" isLoading={loading} type="submit">
           Login
         </Button>
       </div>

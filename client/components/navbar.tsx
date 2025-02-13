@@ -8,6 +8,7 @@ import {
   Link,
   Button,
 } from "@heroui/react";
+
 import { ThemeSwitch } from "@/components/theme-switch";
 export const AcmeLogo = () => {
   return (
@@ -26,7 +27,7 @@ export const Navbarr = () => {
   return (
     <Navbar shouldHideOnScroll>
       <NavbarBrand>
-        <Link href="/" className="text-black dark:text-white">
+        <Link className="text-black dark:text-white" href="/">
           <AcmeLogo />
           <p className="font-bold text-inherit">Schedular</p>
         </Link>

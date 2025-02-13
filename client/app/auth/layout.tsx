@@ -17,9 +17,9 @@ export default function AuthLayout({
       <Card className="max-w-full w-[340px] min-h-[400px]">
         <CardBody className="overflow-hidden flex flex-col gap-4">
           <Tabs
-            selectedKey={selectedTab}
-            aria-label="Auth tabs"
             fullWidth
+            aria-label="Auth tabs"
+            selectedKey={selectedTab}
             size="md"
             onSelectionChange={(key) => router.push(`/auth/${key}`)}
           >
