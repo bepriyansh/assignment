@@ -52,7 +52,7 @@ const Login = () => {
         <Link
           className="cursor-pointer"
           size="sm"
-          onClick={() => router.push("/auth/signup")}
+          onPress={() => router.push("/auth/signup")}
         >
           Sign up
         </Link>
