@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import { Input, Link, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
-import { login } from "@/actions/auth";
 
+import { login } from "@/actions/auth";
 
 const Login = () => {
   const router = useRouter();
@@ -19,7 +19,7 @@ const Login = () => {
 
     const response = await login(email, password);
 
-    if(response?.error){
+    if (response?.error) {
       setError(response.error);
     }
     setLoading(false);

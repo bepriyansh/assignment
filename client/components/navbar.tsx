@@ -8,7 +8,6 @@ import {
   Link,
   Button,
 } from "@heroui/react";
-import { useSession } from "next-auth/react";
 
 import { ThemeSwitch } from "@/components/theme-switch";
 export const AcmeLogo = () => {
@@ -25,8 +24,6 @@ export const AcmeLogo = () => {
 };
 
 export const Navbarr = () => {
-  const { data: session } = useSession();
-
   return (
     <Navbar shouldHideOnScroll>
       <NavbarBrand>
@@ -40,28 +37,21 @@ export const Navbarr = () => {
         <NavbarItem>
           <ThemeSwitch />
         </NavbarItem>
-        {!session && (
-          <div className="flex gap-4 items-center justify-center">
-            <NavbarItem className="hidden lg:flex">
-              <Link href="/auth/login">Login</Link>
-            </NavbarItem>
-            <NavbarItem>
-              <Button
-                as={Link}
-                color="primary"
-                href="/auth/signup"
-                variant="flat"
-              >
-                Sign Up
-              </Button>
-            </NavbarItem>
-          </div>
-        )}
-        {session && (
-          <NavbarItem>
-            <Button color="danger">Sign Out</Button>
+        <div className="flex gap-4 items-center justify-center">
+          <NavbarItem className="hidden lg:flex">
+            <Link href="/auth/login">Login</Link>
           </NavbarItem>
-        )}
+          <NavbarItem>
+            <Button
+              as={Link}
+              color="primary"
+              href="/auth/signup"
+              variant="flat"
+            >
+              Sign Up
+            </Button>
+          </NavbarItem>
+        </div>
       </NavbarContent>
     </Navbar>
   );
