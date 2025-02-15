@@ -9,6 +9,7 @@ export default auth(async function middleware(req) {
   const session = await auth();
   const isLoggedIn = !!session;
   const { pathname, origin } = req.nextUrl;
+  console.log("IsLoggedIn : ", isLoggedIn)
 
   if (
     pathname.startsWith("/auth/login") ||

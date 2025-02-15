@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 // Add this middleware to log all incoming requests
 app.use(logger);
 
-app.use("/api", routes);
+app.use("/api/v1", routes);
 app.use(errorHandler);
 app.use(notFound);
 
