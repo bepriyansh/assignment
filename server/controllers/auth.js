@@ -2,20 +2,22 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/user.js";
 import { createError, createResponse } from "../utils/responseHandler.js";
+import dotenv from "dotenv";
+dotenv.config();
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.SECRET;
 
 export const signup = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
-      next(createError(400, "All fields are required!"));
+      return next(createError(400, "All fields are required!"));
     }
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      next(createError(400, "User already exists"));
+      return next(createError(400, "User already exists"));
     }
 
     // Hash password
@@ -52,12 +54,12 @@ export const login = async (req, res, next) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
-      next(createError(401, "Invalid credentials"));
+      return next(createError(401, "Invalid credentials"));
     }
 
     const isValid = await bcrypt.compare(password, user.password);
     if (!isValid) {
-      next(createError(401, "Invalid credentials"));
+      return next(createError(401, "Invalid credentials"));
     }
 
     const token = jwt.sign({ userId: user._id, name: user.name }, JWT_SECRET, {
